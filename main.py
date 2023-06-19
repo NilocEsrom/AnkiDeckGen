@@ -1,15 +1,14 @@
-# one of the language codes listed in googletrans.LANGUAGES or one of the language names listed in googletrans.LANGCODES
+# one of the language codes listed in googletrans.LANGCODES
 native_lang = 'en' # your native language code
 target_lang = 'de' # the language code of your phrases
 
 
 ###################################################################################################
 # google translater
+# https://pypi.org/project/googletrans/
 from googletrans import Translator
 gt = Translator()
 
-
-###################################################################################################
 # returns translated string from input. edit this function to use a different translate, eg. DeepL, Yandex, etc.
 def translate_str(s):
 	try:
@@ -29,7 +28,7 @@ def get_mp3(s,fname):
 		tts.save('audio_output/' + fname)
 	except:
 		tts = gTTS(s, lang=target_lang)
-		tts.save('audio_output/' + fnam)
+		tts.save('audio_output/' + fname)
 
 
 ###################################################################################################
@@ -42,7 +41,8 @@ reset_text = Style.RESET_ALL
 
 
 ###################################################################################################
-# adding /removing stress markers of Russian words
+# adding/removing stress markers of Russian words
+# https://github.com/Vuizur/add-stress-to-epub
 from russian_text_stresser.text_stresser import RussianTextStresser
 rts = RussianTextStresser()
 
@@ -50,10 +50,11 @@ def accent(s):
 	new_s = rts.stress_text(s)
 	return new_s
 
-def unaccent(s):# spacy won't lemmatise accented russian strings
+def unaccent(s):
 	# remove diacritic from input text
 	new_s = s.replace('\u0301', '')
 	return new_s
+
 
 ###################################################################################################
 from datetime import datetime
@@ -108,4 +109,5 @@ def translate_list():
 			print(reset_text + '')
 			
 ###################################################################################################
+# run program
 translate_list()
