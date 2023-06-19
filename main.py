@@ -1,6 +1,6 @@
 # one of the language codes listed in googletrans.LANGCODES
 native_lang = 'en' # your native language code
-target_lang = 'de' # the language code of your phrases
+target_lang = 'ru' # the language code of your phrases
 
 
 ###################################################################################################
